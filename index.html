@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base target="_self">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NoLAGLearnings - Learn Without Lag. Grow Without Limits.</title>
+    <meta name="description" content="Futuristic tech education portal offering cutting-edge courses in AI, ML, Data Science, Full Stack Development, Cloud Computing, DevOps, Web3, and more.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#00f3ff",
+                        secondary: "#9d4edd",
+                        accent: "#ff00ff",
+                        dark: "#0a0a0f",
+                        "dark-card": "#12121a",
+                        "dark-border": "#1e1e2d"
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif']
+                    },
+                    animation: {
+                        'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'slide-in': 'slide-in 0.5s ease-out',
+                        'neon-glow': 'neon-glow 1.5s ease-in-out infinite alternate'
+                    },
+                    keyframes: {
+                        'pulse-glow': {
+                            '0%, 100%': { 'box-shadow': '0 0 5px #00f3ff, 0 0 10px #00f3ff, 0 0 15px #00f3ff' },
+                            '50%': { 'box-shadow': '0 0 10px #00f3ff, 0 0 20px #00f3ff, 0 0 30px #00f3ff' }
+                        },
+                        'float': {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' }
+                        },
+                        'slide-in': {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        'neon-glow': {
+                            '0%': { 'text-shadow': '0 0 5px #9d4edd, 0 0 10px #9d4edd' },
+                            '100%': { 'text-shadow': '0 0 10px #9d4edd, 0 0 20px #9d4edd, 0 0 30px #9d4edd' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        body {
+            background-color: #0a0a0f;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #0a0a0f 0%, #12121a 50%, #1a1a2e 100%);
+        }
+        .neon-border {
+            border: 1px solid rgba(0, 243, 255, 0.3);
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
+        }
+        .tech-grid-item:hover {
+            transform: translateY(-5px);
+            transition: transform 0.3s ease;
+            border-color: #00f3ff;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -12px;
+            top: 0;
+            width: 24px;
+            height: 24px;
+            background: #00f3ff;
+            border-radius: 50%;
+            box-shadow: 0 0 15px #00f3ff;
+        }
+        .testimonial-card:hover {
+            transform: scale(1.02);
+            transition: transform 0.3s ease;
+        }
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            transition: transform 0.3s ease;
+            border-color: #9d4edd;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="min-h-screen gradient-bg font-inter">
+    <!-- Navigation -->
+    <header class="sticky top-0 z-50 bg-dark/90 backdrop-blur-lg border-b border-dark-border">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center">
+                        <i class="fas fa-bolt text-white"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">NoLAGLearnings</h1>
+                        <p class="text-xs text-gray-400">Learn Without Lag</p>
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#" class="text-gray-300 hover:text-primary transition-colors duration-300" onclick="navigateTo('home')">Home</a>
+                    <a href="#" class="text-gray-300 hover:text-primary transition-colors duration-300" onclick="navigateTo('courses')">Courses</a>
+                    <a href="#" class="text-gray-300 hover:text-primary transition-colors duration-300" onclick="navigateTo('roadmaps')">Career Roadmaps</a>
+                    <a href="#" class="text-gray-300 hover:text-primary transition-colors duration-300" onclick="navigateTo('subscriptions')">Plans</a>
+                    <a href="#" class="text-gray-300 hover:text-primary transition-colors duration-300" onclick="navigateTo('mentorship')">Mentorship</a>
+                    <a href="#" class="text-gray-300 hover:text-primary transition-colors duration-300" onclick="navigateTo('dashboard')">Dashboard</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <button class="px-6 py-2 bg-gradient-to-r from-primary to-secondary rounded-full font-semibold hover:opacity-90 transition-opacity duration-300" onclick="navigateTo('login')">
+                        Login
+                    </button>
+                    <button class="md:hidden text-gray-300">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="relative overflow-hidden py-20 md:py-32">
+            <div class="absolute inset-0 bg-gradient-to-r from-primary/10 to-secondary/10 blur-3xl"></div>
+            <div class="container mx-auto px-4 relative z-10">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6 animate-slide-in">
+                        <span class="bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">Learn Without Lag.</span>
+                        <br>
+                        <span class="text-white">Grow Without Limits.</span>
+                    </h1>
+                    <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
+                        Master cutting-edge technologies with industry experts. Join 50,000+ students accelerating their careers in tech.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <button class="px-8 py-4 bg-gradient-to-r from-primary to-secondary rounded-full font-bold text-lg hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 transform hover:scale-105" onclick="navigateTo('enroll')">
+                            <i class="fas fa-rocket mr-2"></i> Start Learning Free
+                        </button>
+                        <button class="px-8 py-4 border-2 border-primary rounded-full font-bold text-lg hover:bg-primary/10 transition-all duration-300" onclick="navigateTo('courses')">
+                            <i class="fas fa-play-circle mr-2"></i> Explore Courses
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us -->
+        <section class="py-20">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Why Choose <span class="text-primary">NoLAGLearnings</span></h2>
+                    <p class="text-gray-400 max-w-2xl mx-auto">Experience education reimagined for the digital age</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="bg-dark-card p-8 rounded-2xl neon-border hover:shadow-xl hover:shadow-primary/10 transition-all duration-300">
+                        <div class="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mb-6">
+                            <i class="fas fa-bolt text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Zero Lag Learning</h3>
+                        <p class="text-gray-400">Real-time code execution, instant feedback, and seamless learning experience.</p>
+                    </div>
+                    
+                    <div class="bg-dark-card p-8 rounded-2xl neon-border hover:shadow-xl hover:shadow-primary/10 transition-all duration-300">
+                        <div class="w-16 h-16 rounded-full bg-secondary/20 flex items-center justify-center mb-6">
+                            <i class="fas fa-user-graduate text-secondary text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Industry Mentors</h3>
+                        <p class="text-gray-400">Learn from tech leaders at Google, Microsoft, Amazon, and top startups.</p>
+                    </div>
+                    
+                    <div class="bg-dark-card p-8 rounded-2xl neon-border hover:shadow-xl hover:shadow-primary/10 transition-all duration-300">
+                        <div class="w-16 h-16 rounded-full bg-accent/20 flex items-center justify-center mb-6">
+                            <i class="fas fa-briefcase text-accent text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Career First</h3>
+                        <p class="text-gray-400">Guaranteed internships and job referrals upon course completion.</p>
+                    </div>
+                    
+                    <div class="bg-dark-card p-8 rounded-2xl neon-border hover:shadow-xl hover:shadow-primary/10 transition-all duration-300">
+                        <div class="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mb-6">
+                            <i class="fas fa-infinity text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Lifetime Access</h3>
+                        <p class="text-gray-400">Course materials updated regularly. Access forever with one-time payment.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Emerging Technologies Grid -->
+        <section class="py-20">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Master <span class="text-primary">Future Tech</span></h2>
+                    <p class="text-gray-400 max-w-2xl mx-auto">Comprehensive courses in the most in-demand technologies</p>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                    <div class="tech-grid-item bg-dark-card p-6 rounded-xl border border-dark-border hover:border-primary transition-all duration-300 text-center group">
+                        <div class="w-20 h-20 rounded-full bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-brain text-white text-3xl"></i>
+                        </div>
+                        <h3 class="font-bold mb-2">AI & ML</h3>
+                        <p class="text-sm text-gray-400">Master AI algorithms</p>
+                    </div>
+                    
+                    <div class="tech-grid-item bg-dark-card p-6 rounded-xl border border-dark-border hover:border-primary transition-all duration-300 text-center group">
+                        <div class="w-20 h-20 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-chart-line text-white text-3xl"></i>
+                        </div>
+                        <h3 class="font-bold mb-2">Data Science</h3>
+                        <p class="text-sm text-gray-400">Advanced analytics</p>
+                    </div>
+                    
+                    <div class="tech-grid-item bg-dark-card p-6 rounded-xl border border-dark-border hover:border-primary transition-all duration-300 text-center group">
+                        <div class="w-20 h-20 rounded-full bg-gradient-to-br from-green-500 to-emerald-400 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-code text-white text-3xl"></i>
+                        </div>
+                        <h3 class="font-bold mb-2">Full Stack</h3>
+                        <p class="text-sm text-gray-400">End-to-end development</p>
+                    </div>
+                    
+                    <div class="tech-grid-item bg-dark-card p-6 rounded-xl border border-dark-border hover:border-primary transition-all duration-300 text-center group">
+                        <div class="w-20 h-20 rounded-full bg-gradient-to-br from-orange-500 to-yellow-400 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-cloud text-white text-3xl"></i>
+                        </div>
+                        <h3 class="font-bold mb-2">Cloud Computing</h3>
+                        <p class="text-sm text-gray-400">AWS, Azure, GCP</p>
+                    </div>
+                    
+                    <div class="tech-grid-item bg-dark-card p-6 rounded-xl border border-dark-border hover:border-primary transition-all duration-300 text-center group">
+                        <div class="w-20 h-20 rounded-full bg-gradient-to-br from-red-500 to-rose-400 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-cogs text-white text-3xl"></i>
+                        </div>
+                        <h3 class="font-bold mb-2">DevOps</h3>
+                        <p class="text-sm text-gray-400">CI/CD & Automation</p>
+                    </div>
+                    
+                    <div class="tech-grid-item bg-dark-card p-6 rounded-xl border border-dark-border hover:border-primary transition-all duration-300 text-center group">
+                        <div class="w-20 h-20 rounded-full bg-gradient-to-br from-indigo-500 to-violet-400 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-link text-white text-3xl"></i>
+                        </div>
+                        <h3 class="font-bold mb-2">Web3</h3>
+                        <p class="text-sm text-gray-400">Blockchain & DApps</p>
+                    </div>
+                    
+                    <div class="tech-grid-item bg-dark-card p-6 rounded-xl border border-dark-border hover:border-primary transition-all duration-300 text-center group">
+                        <div class="w-20 h-20 rounded-full bg-gradient-to-br from-cyan-500 to-blue-400 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-robot text-white text-3xl"></i>
+                        </div>
+                        <h3 class="font-bold mb-2">Prompt Engineering</h3>
+                        <p class="text-sm text-gray-400">AI Communication</p>
+                    </div>
+                    
+                    <div class="tech-grid-item bg-dark-card p-6 rounded-xl border border-dark-border hover:border-primary transition-all duration-300 text-center group">
+                        <div class="w-20 h-20 rounded-full bg-gradient-to-br from-pink-500 to-rose-400 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-cube text-white text-3xl"></i>
+                        </div>
+                        <h3 class="font-bold mb-2">SaaS Development</h3>
+                        <p class="text-sm text-gray-400">Scalable applications</p>
+                    </div>
+                    
+                    <div class="tech-grid-item bg-dark-card p-6 rounded-xl border border-dark-border hover:border-primary transition-all duration-300 text-center group">
+                        <div class="w-20 h-20 rounded-full bg-gradient-to-br from-emerald-500 to-green-400 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-magic text-white text-3xl"></i>
+                        </div>
+                        <h3 class="font-bold mb-2">AI Automation</h3>
+                        <p class="text-sm text-gray-400">Workflow optimization</p>
+                    </div>
+                    
+                    <div class="tech-grid-item bg-dark-card p-6 rounded-xl border border-dark-border hover:border-primary transition-all duration-300 text-center group">
+                        <div class="w-20 h-20 rounded-full bg-gradient-to-br from-amber-500 to-yellow-400 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-plus text-white text-3xl"></i>
+                        </div>
+                        <h3 class="font-bold mb-2">10+ More</h3>
+                        <p class="text-sm text-gray-400">Emerging technologies</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Career Growth Timeline -->
+        <section class="py-20">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Your <span class="text-secondary">Career Journey</span></h2>
+                    <p class="text-gray-400 max-w-2xl mx-auto">From beginner to industry professional in 12 months</p>
+                </div>
+                
+                <div class="relative max-w-4xl mx-auto">
+                    <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-primary to-secondary"></div>
+                    
+                    <div class="mb-12 relative">
+                        <div class="md:w-1/2 ml-auto pl-12 md:pl-0 md:pr-12">
+                            <div class="bg-dark-card p-6 rounded-2xl border border-dark-border">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mr-4">
+                                        <span class="text-primary font-bold">1</span>
+                                    </div>
+                                    <h3 class="text-xl font-bold">Month 1-3: Foundation</h3>
+                                </div>
+                                <p class="text-gray-400">Master programming fundamentals, data structures, and algorithms. Build your first projects.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-12 relative">
+                        <div class="md:w-1/2 pr-12">
+                            <div class="bg-dark-card p-6 rounded-2xl border border-dark-border">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center mr-4">
+                                        <span class="text-secondary font-bold">2</span>
+                                    </div>
+                                    <h3 class="text-xl font-bold">Month 4-6: Specialization</h3>
+                                </div>
+                                <p class="text-gray-400">Choose your tech stack. Build real-world applications. Get industry mentorship.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-12 relative">
+                        <div class="md:w-1/2 ml-auto pl-12 md:pl-0 md:pr-12">
+                            <div class="bg-dark-card p-6 rounded-2xl border border-dark-border">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center mr-4">
+                                        <span class="text-accent font-bold">3</span>
+                                    </div>
+                                    <h3 class="text-xl font-bold">Month 7-9: Advanced Projects</h3>
+                                </div>
+                                <p class="text-gray-400">Work on capstone projects. Contribute to open source. Build your portfolio.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="relative">
+                        <div class="md:w-1/2 pr-12">
+                            <div class="bg-dark-card p-6 rounded-2xl border border-dark-border">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mr-4">
+                                        <span class="text-primary font-bold">4</span>
+                                    </div>
+                                    <h3 class="text-xl font-bold">Month 10-12: Career Launch</h3>
+                                </div>
+                                <p class="text-gray-400">Interview preparation. Guaranteed internships. Job referrals to top companies.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="py-20">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Success <span class="text-primary">Stories</span></h2>
+                    <p class="text-gray-400 max-w-2xl mx-auto">Join thousands who transformed their careers</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="testimonial-card bg-dark-card p-8 rounded-2xl border border-dark-border hover:shadow-xl hover:shadow-primary/10 transition-all duration-300">
+                        <div class="flex items-center mb-6">
+                            <img src="https://picsum.photos/60?random=1" alt="Sarah Chen" class="w-12 h-12 rounded-full mr-4">
+                            <div>
+                                <h4 class="font-bold">Sarah Chen</h4>
+                                <p class="text-primary text-sm">Software Engineer @ Google</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 italic mb-6">"NoLAGLearnings transformed my career. From biology graduate to Google engineer in 9 months!"</p>
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card bg-dark-card p-8 rounded-2xl border border-dark-border hover:shadow-xl hover:shadow-primary/10 transition-all duration-300">
+                        <div class="flex items-center mb-6">
+                            <img src="https://picsum.photos/60?random=2" alt="Alex Rodriguez" class="w-12 h-12 rounded-full mr-4">
+                            <div>
+                                <h4 class="font-bold">Alex Rodriguez</h4>
+                                <p class="text-primary text-sm">AI Researcher @ OpenAI</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 italic mb-6">"The AI specialization course gave me the exact skills needed for cutting-edge research positions."</p>
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card bg-dark-card p-8 rounded-2xl border border-dark-border hover:shadow-xl hover:shadow-primary/10 transition-all duration-300">
+                        <div class="flex items-center mb-6">
+                            <img src="https://picsum.photos/60?random=3" alt="Priya Sharma" class="w-12 h-12 rounded-full mr-4">
+                            <div>
+                                <h4 class="font-bold">Priya Sharma</h4>
+                                <p class="text-primary text-sm">DevOps Lead @ Amazon</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 italic mb-6">"The hands-on projects and mentorship prepared me perfectly for cloud engineering roles."</p>
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Preview -->
+        <section class="py-20">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Flexible <span class="text-secondary">Learning Plans</span></h2>
+                    <p class="text-gray-400 max-w-2xl mx-auto">Choose the plan that fits your learning style and budget</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                    <div class="pricing-card bg-dark-card p-8 rounded-2xl border border-dark-border hover:border-secondary transition-all duration-300">
+                        <div class="text-center mb-8">
+                            <h3 class="text-2xl font-bold mb-4">Monthly</h3>
+                            <div class="flex justify-center items-baseline mb-4">
+                                <span class="text-4xl font-bold">$49</span>
+                                <span class="text-gray-400 ml-2">/month</span>
+                            </div>
+                            <p class="text-gray-400">Perfect for exploring</p>
+                        </div>
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-primary mr-3"></i>
+                                <span>Access to all courses</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-primary mr-3"></i>
+                                <span>Community support</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-primary mr-3"></i>
+                                <span>Weekly live sessions</span>
+                            </li>
+                            <li class="flex items-center text-gray-500">
+                                <i class="fas fa-times mr-3"></i>
+                                <span>1-on-1 mentorship</span>
+                            </li>
+                        </ul>
+                        <button class="w-full py-3 border-2 border-primary rounded-full font-bold hover:bg-primary/10 transition-colors duration-300" onclick="navigateTo('subscribe')">
+                            Get Started
+                        </button>
+                    </div>
+                    
+                    <div class="pricing-card bg-dark-card p-8 rounded-2xl border-2 border-secondary relative transform scale-105 hover:scale-110 transition-all duration-300">
+                        <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                            <span class="bg-secondary text-white px-4 py-1 rounded-full text-sm font-bold">MOST POPULAR</span>
+                        </div>
+                        <div class="text-center mb-8">
+                            <h3 class="text-2xl font-bold mb-4">Annual</h3>
+                            <div class="flex justify-center items-baseline mb-4">
+                                <span class="text-4xl font-bold">$399</span>
+                                <span class="text-gray-400 ml-2">/year</span>
+                            </div>
+                            <p class="text-gray-400">Save 32% • Best value</p>
+                        </div>
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-secondary mr-3"></i>
+                                <span>Everything in Monthly</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-secondary mr-3"></i>
+                                <span>1-on-1 mentorship</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-secondary mr-3"></i>
+                                <span>Job referral program</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-secondary mr-3"></i>
+                                <span>Certificate of completion</span>
+                            </li>
+                        </ul>
+                        <button class="w-full py-3 bg-gradient-to-r from-primary to-secondary rounded-full font-bold hover:opacity-90 transition-opacity duration-300" onclick="navigateTo('subscribe')">
+                            Get Premium
+                        </button>
+                    </div>
+                    
+                    <div class="pricing-card bg-dark-card p-8 rounded-2xl border border-dark-border hover:border-secondary transition-all duration-300">
+                        <div class="text-center mb-8">
+                            <h3 class="text-2xl font-bold mb-4">Pay-per-Class</h3>
+                            <div class="flex justify-center items-baseline mb-4">
+                                <span class="text-4xl font-bold">$19</span>
+                                <span class="text-gray-400 ml-2">/class</span>
+                            </div>
+                            <p class="text-gray-400">Flexible learning</p>
+                        </div>
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-primary mr-3"></i>
+                                <span>Individual class access</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-primary mr-3"></i>
+                                <span>Lifetime access to class</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-primary mr-3"></i>
+                                <span>Download materials</span>
+                            </li>
+                            <li class="flex items-center text-gray-500">
+                                <i class="fas fa-times mr-3"></i>
+                                <span>No subscription required</span>
+                            </li>
+                        </ul>
+                        <button class="w-full py-3 border-2 border-primary rounded-full font-bold hover:bg-primary/10 transition-colors duration-300" onclick="navigateTo('classes')">
+                            Browse Classes
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-20">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto text-center bg-gradient-to-r from-dark-card to-dark-border p-12 rounded-3xl border border-primary/30">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to <span class="text-primary animate-neon-glow">Accelerate</span> Your Career?</h2>
+                    <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
+                        Join 50,000+ students who transformed their careers with NoLAGLearnings
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <button class="px-8 py-4 bg-gradient-to-r from-primary to-secondary rounded-full font-bold text-lg hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 transform hover:scale-105" onclick="navigateTo('enroll')">
+                            <i class="fas fa-graduation-cap mr-2"></i> Enroll Now
+                        </button>
+                        <button class="px-8 py-4 border-2 border-primary rounded-full font-bold text-lg hover:bg-primary/10 transition-all duration-300" onclick="navigateTo('courses')">
+                            <i class="fas fa-play mr-2"></i> Start Learning Free
+                        </button>
+                    </div>
+                    <p class="text-gray-400 mt-8 text-sm">
+                        <i class="fas fa-shield-alt mr-2"></i> 7-day money-back guarantee • No credit card required for trial
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark-card border-t border-dark-border">
+        <div class="container mx-auto px-4 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-6">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center">
+                            <i class="fas fa-bolt text-white"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">NoLAGLearnings</h2>
+                            <p class="text-xs text-gray-400">Learn Without Lag. Grow Without Limits.</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-6">Master cutting-edge technologies with industry experts. Transform your career in tech.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-dark-border flex items-center justify-center hover:bg-primary/20 transition-colors duration-300">
+                            <i class="fab fa-twitter text-gray-300"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-dark-border flex items-center justify-center hover:bg-primary/20 transition-colors duration-300">
+                            <i class="fab fa-linkedin text-gray-300"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-dark-border flex items-center justify-center hover:bg-primary/20 transition-colors duration-300">
+                            <i class="fab fa-github text-gray-300"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-dark-border flex items-center justify-center hover:bg-primary/20 transition-colors duration-300">
+                            <i class="fab fa-youtube text-gray-300"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors duration-300" onclick="navigateTo('courses')">All Courses</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors duration-300" onclick="navigateTo('roadmaps')">Career Roadmaps</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors duration-300" onclick="navigateTo('subscriptions')">Pricing Plans</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors duration-300" onclick="navigateTo('mentorship')">Mentorship</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors duration-300" onclick="navigateTo('about')">About Us</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Technologies</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors duration-300">AI & Machine Learning</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors duration-300">Data Science</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors duration-300">Full Stack Development</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors duration-300">Cloud Computing</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors duration-300">Web3 & Blockchain</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Contact</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-envelope mr-3 text-primary"></i>
+                            <span>hello@nolaglearnings.com</span>
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-phone mr-3 text-primary"></i>
+                            <span>+1 (555) 123-4567</span>
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-map-marker-alt mr-3 text-primary"></i>
+                            <span>San Francisco, CA</span>
+                        </li>
+                    </ul>
+                    <div class="mt-8">
+                        <h4 class="text-sm font-bold mb-4">NEWSLETTER</h4>
+                        <div class="flex">
+                            <input type="email" placeholder="Your email" class="flex-grow px-4 py-2 bg-dark-border rounded-l-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                            <button class="px-4 py-2 bg-gradient-to-r from-primary to-secondary rounded-r-lg font-bold hover:opacity-90 transition-opacity duration-300">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-dark-border mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 NoLAGLearnings. All rights reserved. | <a href="#" class="hover:text-primary transition-colors duration-300">Privacy Policy</a> • <a href="#" class="hover:text-primary transition-colors duration-300">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Define navigation data
+        const pages = {
+            "home": "#",
+            "courses": "#",
+            "roadmaps": "#",
+            "subscriptions": "#",
+            "mentorship": "#",
+            "dashboard": "#",
+            "login": "#",
+            "enroll": "#",
+            "subscribe": "#",
+            "classes": "#",
+            "about": "#"
+        };
+
+        // Navigation function
+        function navigateTo(page) {
+            event.preventDefault();
+            const url = pages[page];
+            if (url) {
+                // In a real application, this would navigate to the actual page
+                // For demo purposes, we'll show an alert
+                alert(`Navigating to ${page.replace(/-/g, ' ').toUpperCase()} page`);
+                // window.location.href = url;
+            }
+        }
+
+        // Initialize animations on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-slide-in');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all sections for animation
+            document.querySelectorAll('section').forEach(section => {
+                observer.observe(section);
+            });
+
+            // Add hover effects to interactive elements
+            document.querySelectorAll('button, a').forEach(element => {
+                element.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px)';
+                });
+                element.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+
+        // Newsletter subscription
+        document.addEventListener('DOMContentLoaded', function() {
+            const newsletterForm = document.querySelector('footer input[type="email"]');
+            const newsletterButton = document.querySelector('footer button');
+            
+            if (newsletterButton) {
+                newsletterButton.addEventListener('click', function() {
+                    const email = newsletterForm.value;
+                    if (email && email.includes('@')) {
+                        alert('Thank you for subscribing to our newsletter!');
+                        newsletterForm.value = '';
+                    } else {
+                        alert('Please enter a valid email address.');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
